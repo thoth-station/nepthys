@@ -16,8 +16,8 @@ def get_version():
 setup(
     name='nepthys',
     version=get_version(),
-    description='Taking your code back to live as an interactive documentation automatically.',
-    long_description='Taking your code back to live as an interactive documentation automatically.',
+    description='Bringing your code back to live as an interactive documentation automatically',
+    long_description='Bringing your code back to live as an interactive documentation automatically.',
     author='Fridolin Pokorny',
     author_email='fridolin@redhat.com',
     license='GPLv3+',
