@@ -1,0 +1,18 @@
+---
+- name: "Playbook to provision Thoth's Nepthys deployment"
+
+  connection: local
+  gather_facts: false
+  hosts: localhost
+  tags:
+    - openshift
+    - thoth
+    - nepthys
+
+  vars:
+    NEPTHYS_APPLICATION_NAMESPACE: "{{ lookup('env','NEPTHYS_APPLICATION_NAMESPACE') }}"
+    OCP_TOKEN: "{{ lookup('env','OCP_TOKEN') }}"
+    OCP_URL: "{{ lookup('env','OCP_URL') }}"
+
+  roles:
+    - role: nepthys-deploy
