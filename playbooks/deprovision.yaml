@@ -1,0 +1,22 @@
+---
+- name: "Playbook to deprovision Thoth's Nepthys deployment"
+  connection: local
+  gather_facts: false
+  hosts: localhost
+  tags:
+    - openshift
+    - thoth
+    - nepthys
+
+  vars:
+    NEPTHYS_APPLICATION_NAMESPACE: "{{ lookup('env','NEPTHYS_APPLICATION_NAMESPACE') }}"
+    OPENSHIFT_AUTH_TOKEN: "{{ lookup('env','OCP_TOKEN') }}"
+    OPENSHIFT_MASTER_URL: "{{ lookup('env','OCP_URL') }}"
+
+  tasks:
+    - name: "Login to OpenShift using provided token"
+      changed_when: false
+      command: "oc login {{ OCP_URL }} --insecure-skip-tls-verify=true --token {{ OCP_TOKEN }}"
+
+    - name: "Deprovision Nepthys"
+      command: oc --namespace {{ NEPTHYS_APPLICATION_NAMESPACE }} delete all --selector 'component=nepthys'
