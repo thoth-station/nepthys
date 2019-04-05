@@ -49,6 +49,14 @@ objects:
                     - mountPath: /home/user/.ssh
                       name: ssh-config
                   env:
+                    - name: PIPENV_NOSPIN
+                      value: "1"
+                    - name: PIPENV_COLORBLIND
+                      value: "1"
+                    - name: PIPENV_COLORBLIND
+                      value: "1"
+                    - name: PIPENV_HIDE_EMOJIS
+                      value: "1"
                     - name: GITHUB_TOKEN
                       valueFrom:
                         secretKeyRef:
