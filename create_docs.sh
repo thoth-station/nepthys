@@ -10,6 +10,10 @@ rm -rf clones thoth
 mkdir -p thoth/
 for repo in adviser analyzer common lab package-extract python solver storages; do
 	git clone https://github.com/thoth-station/${repo}.git clones/${repo}
+	# Copy _templates to each repo for Google analytics functionality.
+	if  [[ $GITHUB_COMMIT = "1" ]]; then
+		cp -r _templates/ clones/${repo}/docs/source/
+	fi
 	pushd clones/${repo}
 	pipenv install
 	# Dirty hack due to deps issues.
