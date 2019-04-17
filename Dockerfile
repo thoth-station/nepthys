@@ -13,6 +13,7 @@ WORKDIR /home/user
 # Copy the script from current directory contents into the container
 COPY docker_entrypoint.sh /home/user
 COPY create_docs.sh /home/user
+COPY _templates /home/user/_templates
 
 # Add the ssh key from local dir to container dir.
 #COPY id_rsa /home/user/.ssh/id_rsa
