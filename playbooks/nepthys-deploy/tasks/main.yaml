@@ -24,9 +24,6 @@
     -p GENERIC_SECRET={{ GENERIC_SECRET | default('secret101', true) }}
     | oc apply --namespace {{ NEPTHYS_APPLICATION_NAMESPACE }} -f -
 
-- name: "Start nepthys-job Build"
-  command: oc start-build --namespace {{ NEPTHYS_APPLICATION_NAMESPACE }} nepthys-job
-
 - name: "Check if required Secret 'nepthys-secret' exists"
   command: "oc get secret --namespace {{ NEPTHYS_APPLICATION_NAMESPACE }} nepthys-secret"
   ignore_errors: true
