@@ -8,7 +8,7 @@ workdir=$PWD
 
 rm -rf clones thoth
 mkdir -p thoth/
-for repo in adviser analyzer common lab package-extract python solver storages package-analyzer; do
+for repo in adviser analyzer common lab package-extract python solver storages package-analyzer build-analyzers; do
 	git clone https://github.com/thoth-station/${repo}.git clones/${repo}
 	# Copy _templates to each repo for Google analytics functionality.
 	if  [[ $GITHUB_COMMIT = "1" ]]; then
