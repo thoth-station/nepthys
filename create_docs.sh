@@ -37,10 +37,7 @@ if  [[ $GITHUB_COMMIT = "1" ]]; then
     git clone git@github.com:thoth-station/thoth-station.github.io.git
     cp -r thoth/* thoth-station.github.io/docs/developers/
     cd thoth-station.github.io
-    git branch origin --delete feature/docs || true
-    git checkout -b feature/docs
     git add .
     git commit -m "Routine Docs Update"
-    git push origin feature/docs
-    hub pull-request -l "bot" --no-edit
+    git push origin master
 fi
