@@ -55,10 +55,10 @@ objects:
       triggers:
         - imageChange: {}
           type: ImageChange
-        - generic:
-            allowEnv: false
-            secret: "${GENERIC_SECRET}"
-          type: Generic
+        - type: "Generic"
+          generic:
+            secretReference:
+              name: generic-webhook-secret
 
 parameters:
   - description: "Git repository for Thoth's Nepthys"
@@ -78,8 +78,3 @@ parameters:
     name: IMAGE_STREAM_TAG
     required: true
     value: latest
-
-  - description: "Sercet for the Generic Web-hook"
-    displayName: "Thoth Nepthys generic secret"
-    name: GENERIC_SECRET
-    required: false

@@ -8,3 +8,10 @@
     kebechet-auto-gate:
       jobs:
         - "thoth-coala"
+    post:
+      jobs:
+        - trigger-build:
+            vars:
+              cluster: "paas.psi.redhat.com"
+              namespace: "aicoe-prod-bots"
+              buildConfigName: "nepthys-job"
