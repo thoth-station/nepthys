@@ -17,7 +17,7 @@ for repo in adviser analyzer common lab package-extract python solver storages p
 	pushd clones/${repo}
 	pipenv install
 	# Dirty hack due to deps issues.
-	pipenv run pip3 install sphinx sphinx_py3doc_enhanced_theme
+	pipenv run pip3 install sphinx sphinx-nameko-theme
 	pipenv run sphinx-apidoc -o docs/source thoth --implicit-namespaces
 	# Get rid of anying warning messages.
 	mkdir -p docs/source/_static; rm docs/source/modules.rst
