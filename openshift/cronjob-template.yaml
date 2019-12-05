@@ -45,6 +45,13 @@ objects:
                     requests:
                       cpu: 500m
                       memory: 1Gi
+                  livenessProbe:
+                    failureThreshold: 1
+                    # Give this job 30 minutes to finish.
+                    initialDelaySeconds: 1800
+                    periodSeconds: 10
+                    tcpSocket:
+                      port: 80
                   volumeMounts:
                     - mountPath: /home/user/.ssh
                       name: ssh-config
