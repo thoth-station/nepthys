@@ -20,7 +20,7 @@ COPY _templates /home/user/_templates
 
 # Install any needed packages
 RUN \
-    dnf install -y --setopt=tsflags=nodocs hub python3-pip gcc redhat-rpm-config python3-devel which graphviz &&\
+    dnf install -y --setopt=tsflags=nodocs hub python36 python3-pip gcc redhat-rpm-config python3-devel which graphviz &&\
     pip3 install pipenv &&\
     mkdir -p /home/user/.ssh &&\
     chmod a+wrx -R /etc/passwd /home/user
