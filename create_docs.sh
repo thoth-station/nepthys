@@ -8,7 +8,7 @@ workdir=$PWD
 
 rm -rf clones thoth
 mkdir -p thoth/
-for repo in adviser analyzer common lab package-extract python solver storages package-analyzer build-analyzers; do
+for repo in adviser analyzer common lab package-extract python solver storages package-analyzer build-analyzers thamos; do
 	git clone https://github.com/thoth-station/${repo}.git clones/${repo}
 	# Copy _templates to each repo for Google analytics functionality.
 	if  [[ $GITHUB_COMMIT = "1" ]]; then
@@ -17,8 +17,16 @@ for repo in adviser analyzer common lab package-extract python solver storages p
 	pushd clones/${repo}
 	pipenv install
 	# Dirty hack due to deps issues.
-	pipenv run pip3 install sphinx==2.2.2 sphinx-nameko-theme==0.0.3
-	pipenv run sphinx-apidoc -o docs/source thoth --implicit-namespaces
+	pipenv run pip3 install sphinx==2.2.2 sphinx-nameko-theme==0.0.3 sphinxcontrib-openapi==0.5.0
+
+	if [[ "$repo" = "thamos" ]]; then
+		# Thamos requires OpenAPI specification from User API.
+		git clone https://github.com/thoth-station/user-api.git ../
+		pipenv run sphinx-apidoc -o docs/source thamos --implicit-namespaces
+	else
+		pipenv run sphinx-apidoc -o docs/source thoth --implicit-namespaces
+	fi
+
 	# Get rid of anying warning messages.
 	mkdir -p docs/source/_static; rm docs/source/modules.rst
 
