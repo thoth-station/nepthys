@@ -60,6 +60,49 @@ objects:
             secretReference:
               name: generic-webhook-secret
 
+  - kind: BuildConfig
+    apiVersion: build.openshift.io/v1
+    metadata:
+      name: s2i-thoth-ubi8-py36-nepthys
+      annotations:
+        thoth-station.ninja/template-version: 0.1.0
+      labels:
+        app: thoth
+        component: nepthys
+    spec:
+      resources:
+        requests:
+          memory: "256Mi"
+          cpu: "500m"
+        limits:
+          memory: "256Mi"
+          cpu: "500m"
+      output:
+        to:
+          kind: ImageStreamTag
+          name: "s2i-thoth-ubi8-py36-nepthys:${IMAGE_STREAM_TAG}"
+      source:
+        dockerfile: |
+          FROM s2i-thoth-ubi8-py36:latest
+          ENV LANG=en_US.UTF-8
+          USER 0
+          RUN dnf install -y graphviz
+          USER 1001
+      strategy:
+        type: Docker
+        dockerStrategy:
+          from:
+            kind: ImageStreamTag
+            name: s2i-thoth-ubi8-py36:latest
+      triggers:
+        - type: ConfigChange
+        - type: ImageChange
+          imageChange: {}
+        - type: Generic
+          generic:
+            secretReference:
+              name: generic-webhook-secret
+
 parameters:
   - description: "Git repository for Thoth's Nepthys"
     displayName: "Thoth Nepthys git repository"
