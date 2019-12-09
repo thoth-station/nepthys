@@ -8,7 +8,7 @@ workdir=$PWD
 
 rm -rf clones thoth
 mkdir -p thoth/
-for repo in adviser analyzer common lab package-extract python solver storages package-analyzer build-analyzers thamos; do
+for repo in thamos adviser analyzer common lab package-extract python solver storages package-analyzer build-analyzers; do
 	git clone https://github.com/thoth-station/${repo}.git clones/${repo}
 	# Copy _templates to each repo for Google analytics functionality.
 	if  [[ $GITHUB_COMMIT = "1" ]]; then
@@ -21,7 +21,7 @@ for repo in adviser analyzer common lab package-extract python solver storages p
 
 	if [[ "$repo" = "thamos" ]]; then
 		# Thamos requires OpenAPI specification from User API.
-		git clone https://github.com/thoth-station/user-api.git ../
+		git clone https://github.com/thoth-station/user-api.git ../user-api
 		pipenv run sphinx-apidoc -o docs/source thamos --implicit-namespaces
 	else
 		pipenv run sphinx-apidoc -o docs/source thoth --implicit-namespaces
