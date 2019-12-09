@@ -17,10 +17,18 @@ for repo in adviser analyzer common lab package-extract python solver storages p
 	pushd clones/${repo}
 	pipenv install
 	# Dirty hack due to deps issues.
-	pipenv run pip3 install sphinx sphinx-nameko-theme
+	pipenv run pip3 install sphinx==2.2.2 sphinx-nameko-theme==0.0.3
 	pipenv run sphinx-apidoc -o docs/source thoth --implicit-namespaces
 	# Get rid of anying warning messages.
 	mkdir -p docs/source/_static; rm docs/source/modules.rst
+
+	# Update database schema image when generating docs for storage.
+	if [[ "$repo" = "storages" ]]; then
+		pipenv install --dev
+		PYTHONPATH=. pipenv run python3 ./thoth-storages generate-schema schema.png
+		cp -f schema.png docs/source/_static/schema.png
+	fi
+
 	pipenv run python3 setup.py build_sphinx
 	# pipenv --rm
 	popd
