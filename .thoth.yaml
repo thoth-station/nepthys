@@ -11,9 +11,6 @@ runtime_environments:
     recommendation_type: latest
 
 managers:
-  - name: update
-    configuration:
-      labels: [bot]
   - name: info
   - name: version
     configuration:
