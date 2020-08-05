@@ -9,39 +9,39 @@ workdir=$PWD
 rm -rf clones thoth
 mkdir -p thoth/
 for repo in thamos adviser analyzer common lab package-extract python solver storages; do
-	git clone --depth 1 https://github.com/thoth-station/${repo}.git clones/${repo}
-	# Copy _templates to each repo for Google analytics functionality.
-	if  [[ $GITHUB_COMMIT = "1" ]]; then
-		cp -r _templates/ clones/${repo}/docs/source/
-	fi
-	pushd clones/${repo}
-	pipenv install
-	# Dirty hack due to deps issues.
-	pipenv run pip3 install sphinx==2.2.2 sphinx-nameko-theme==0.0.3 sphinxcontrib-openapi==0.5.0
+    git clone --depth 1 https://github.com/thoth-station/${repo}.git clones/${repo}
+    # Copy _templates to each repo for Google analytics functionality.
+    if  [[ $GITHUB_COMMIT = "1" ]]; then
+        cp -r _templates/ clones/${repo}/docs/source/
+    fi
+    pushd clones/${repo}
+    pipenv install
+    # Dirty hack due to deps issues.
+    pipenv run pip3 install sphinx==2.2.2 sphinx-nameko-theme==0.0.3 sphinxcontrib-openapi==0.5.0
 
-	if [[ "$repo" = "thamos" ]]; then
-		# Thamos requires OpenAPI specification from User API.
-		git clone --depth 1 https://github.com/thoth-station/user-api.git ../user-api
-		pipenv run sphinx-apidoc -o docs/source thamos --implicit-namespaces
-	else
-		pipenv run sphinx-apidoc -o docs/source thoth --implicit-namespaces
-	fi
+    if [[ "$repo" = "thamos" ]]; then
+        # Thamos requires OpenAPI specification from User API.
+        git clone --depth 1 https://github.com/thoth-station/user-api.git ../user-api
+        pipenv run sphinx-apidoc -o docs/source thamos --implicit-namespaces
+    else
+        pipenv run sphinx-apidoc -o docs/source thoth --implicit-namespaces
+    fi
 
-	# Get rid of anying warning messages.
-	mkdir -p docs/source/_static; rm docs/source/modules.rst
+    # Get rid of anying warning messages.
+    mkdir -p docs/source/_static; rm docs/source/modules.rst
 
-	# Update database schema image when generating docs for storage.
-	if [[ "$repo" = "storages" ]]; then
-		pipenv install --dev
-		PYTHONPATH=. pipenv run python3 ./thoth-storages generate-schema schema.png
-		cp -f schema.png docs/source/_static/schema.png
-	fi
+    # Update database schema image when generating docs for storage.
+    if [[ "$repo" = "storages" ]]; then
+        pipenv install --dev
+        PYTHONPATH=. pipenv run python3 ./thoth-storages generate-schema schema.png
+        cp -f schema.png docs/source/_static/schema.png
+    fi
 
-	pipenv run python3 setup.py build_sphinx
-	# pipenv --rm
-	popd
-	mkdir -p thoth/${repo}/source
-	cp -r clones/${repo}/build/sphinx/html/* thoth/${repo}
+    pipenv run python3 setup.py build_sphinx
+    # pipenv --rm
+    popd
+    mkdir -p thoth/${repo}/source
+    cp -r clones/${repo}/build/sphinx/html/* thoth/${repo}
 done
 
 # NOTE: If GITHUB_COMMIT is set,then thoth-station.github.io will be updated.
