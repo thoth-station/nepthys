@@ -8,7 +8,8 @@ workdir=$PWD
 
 rm -rf clones thoth
 mkdir -p thoth/
-for repo in thamos adviser analyzer common lab package-extract python solver storages; do
+for repo in thamos adviser analyzer common lab package-extract python solver storages
+do
     git clone --depth 1 https://github.com/thoth-station/${repo}.git clones/${repo}
     # Copy _templates to each repo for Google analytics functionality.
     if  [[ $GITHUB_COMMIT = "1" ]]; then
@@ -44,16 +45,29 @@ for repo in thamos adviser analyzer common lab package-extract python solver sto
     cp -r clones/${repo}/build/sphinx/html/* thoth/${repo}
 done
 
+
 # NOTE: If GITHUB_COMMIT is set,then thoth-station.github.io will be updated.
 if  [[ $GITHUB_COMMIT = "1" ]]; then
     # Config: Script commit files on behalf of
-    git config --global user.name $GITHUB_USER
-    git config --global user.email $GITHUB_USER_EMAIL
+    #git config --global user.name $GITHUB_USER
+    #git config --global user.email $GITHUB_USER_EMAIL
     rm -rf thoth-station.github.io
     git clone --depth 1 git@github.com:thoth-station/thoth-station.github.io.git
+    rm -rf thoth-station.github.io/docs/developers/
+
+    for repo in thamos adviser analyzer common lab package-extract python solver storages
+    do
+        mkdir -p thoth-station.github.io/assets/
+        mv thoth/${repo}/_static/* thoth-station.github.io/assets/
+        pushd thoth/${repo}
+        find -iname '*.html' -exec sed -i 's|_static/|/assets/|g' {} \;
+        popd
+    done
+
+    mkdir -p thoth-station.github.io/docs/developers/
     cp -r thoth/* thoth-station.github.io/docs/developers/
     cd thoth-station.github.io
     git add .
-    git commit -m "Routine Docs Update"
+    git commit -m "Routine Docs Update test by fridex"
     git push origin master
 fi

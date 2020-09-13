@@ -103,3 +103,6 @@ venv.bak/
 # mypy
 .mypy_cache/
 clones
+
+thoth-station.github.io/
+thoth/
