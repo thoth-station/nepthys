@@ -6,17 +6,17 @@ die() { echo "$*" 1>&2 ; exit 1; }
 
 workdir=$PWD
 
-# rm -rf clones # thoth
-# mkdir -p thoth/
+rm -rf clones # thoth
+mkdir -p thoth/
 for repo in storages
 do
-    # git clone --depth 1 https://github.com/thoth-station/${repo}.git clones/${repo}
+    git clone --depth 1 https://github.com/thoth-station/${repo}.git clones/${repo}
     # Copy _templates to each repo for Google analytics functionality.
     if  [[ $GITHUB_COMMIT = "1" ]]; then
         cp -r _templates/ clones/${repo}/docs/source/
     fi
     pushd clones/${repo}
-    # pipenv install
+    pipenv install
     # Dirty hack due to deps issues.
     pipenv run pip3 install sphinx==2.2.2 sphinx-nameko-theme==0.0.3 sphinxcontrib-openapi==0.5.0
 
@@ -33,7 +33,7 @@ do
 
     # Update database schema image when generating docs for storage.
     if [[ "$repo" = "storages" ]]; then
-	# pipenv install --dev
+        pipenv install --dev
         PYTHONPATH=. pipenv run python3 ./thoth-storages generate-schema schema.png
         cp -f schema.png docs/source/_static/schema.png
     fi
@@ -58,9 +58,16 @@ if  [[ $GITHUB_COMMIT = "1" ]]; then
     for repo in thamos adviser analyzer common lab package-extract python solver storages
     do
         mkdir -p thoth-station.github.io/assets/
+        mv thoth/${repo}/_modules/  thoth/${repo}/modules/|| true
+        mv thoth/${repo}/_images/  thoth/${repo}/images/|| true
+        mv thoth/${repo}/_sources/  thoth/${repo}/sources/|| true
         mv thoth/${repo}/_static/* thoth-station.github.io/assets/ || true
         pushd thoth/${repo}
         find -iname '*.html' -exec sed -i 's|_static/|/assets/|g' {} \;
+        find -iname '*.html' -exec sed -i 's|../../..//assets/|/assets/|g' {} \;
+        find -iname '*.html' -exec sed -i 's|_modules/|modules/|g' {} \;
+        find -iname '*.html' -exec sed -i 's|_images/|images/|g' {} \;
+        find -iname '*.html' -exec sed -i 's|_sources/|sources/|g' {} \;
         popd
     done
 
