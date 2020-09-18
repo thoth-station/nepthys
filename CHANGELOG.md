@@ -5,3 +5,7 @@
 * Do not comment out GH user
 ### Bug Fixes
 * Make the generated documentation work with jekyll
+
+## Release 0.2.1 (2020-09-18T08:23:13)
+### Features
+* Fix repo listing (#34)
