@@ -8,7 +8,7 @@ workdir=$PWD
 
 rm -rf clones # thoth
 mkdir -p thoth/
-for repo in storages
+for repo in thamos adviser analyzer common lab package-extract python solver storages
 do
     git clone --depth 1 https://github.com/thoth-station/${repo}.git clones/${repo}
     # Copy _templates to each repo for Google analytics functionality.
