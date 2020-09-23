@@ -75,6 +75,6 @@ if  [[ $GITHUB_COMMIT = "1" ]]; then
     cp -r thoth/* thoth-station.github.io/docs/developers/
     cd thoth-station.github.io
     git add .
-    git commit -m "Routine Docs Update test by fridex"
+    git commit -m "Routine Docs Update"
     git push origin master
 fi
