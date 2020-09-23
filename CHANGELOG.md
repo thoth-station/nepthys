@@ -9,3 +9,7 @@
 ## Release 0.2.1 (2020-09-18T08:23:13)
 ### Features
 * Fix repo listing (#34)
+
+## Release 0.2.2 (2020-09-23T08:16:14)
+### Features
+* Fix commit message on routine docs update (#37)
