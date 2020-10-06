@@ -65,8 +65,11 @@ if  [[ $GITHUB_COMMIT = "1" ]]; then
         pushd thoth/${repo}
         find -iname '*.html' -exec sed -i 's|_static/|/assets/|g' {} \;
         find -iname '*.html' -exec sed -i 's|../../..//assets/|/assets/|g' {} \;
+        find -iname '*.html' -exec sed -i 's|../..//assets/|/assets/|g' {} \;
+        find -iname '*.html' -exec sed -i 's|..//assets/|/assets/|g' {} \;
         find -iname '*.html' -exec sed -i 's|_modules/|modules/|g' {} \;
-        find -iname '*.html' -exec sed -i 's|_images/|images/|g' {} \;
+        find -iname '*.html' -exec sed -i 's|_images/|/assets/|g' {} \;
+        find -iname '*.html' -exec sed -i 's|/images/|/assets/|g' {} \;
         find -iname '*.html' -exec sed -i 's|_sources/|sources/|g' {} \;
         popd
     done
