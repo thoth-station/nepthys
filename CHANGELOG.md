@@ -13,3 +13,7 @@
 ## Release 0.2.2 (2020-09-23T08:16:14)
 ### Features
 * Fix commit message on routine docs update (#37)
+
+## Release 0.2.3 (2020-10-13T12:43:12)
+### Features
+* Fix assets location
