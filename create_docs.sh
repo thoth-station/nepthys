@@ -64,13 +64,11 @@ if  [[ $GITHUB_COMMIT = "1" ]]; then
         mv thoth/${repo}/_static/* thoth-station.github.io/assets/ || true
         pushd thoth/${repo}
         find -iname '*.html' -exec sed -i 's|_static/|/assets/|g' {} \;
-        find -iname '*.html' -exec sed -i 's|../../..//assets/|/assets/|g' {} \;
-        find -iname '*.html' -exec sed -i 's|../..//assets/|/assets/|g' {} \;
-        find -iname '*.html' -exec sed -i 's|..//assets/|/assets/|g' {} \;
         find -iname '*.html' -exec sed -i 's|_modules/|modules/|g' {} \;
         find -iname '*.html' -exec sed -i 's|_images/|/assets/|g' {} \;
         find -iname '*.html' -exec sed -i 's|/images/|/assets/|g' {} \;
         find -iname '*.html' -exec sed -i 's|_sources/|sources/|g' {} \;
+        find -iname '*.html' -exec sed -i 's|="[a-zA-Z/._]*/assets/|="/assets/|g' {} \;
         popd
     done
 
