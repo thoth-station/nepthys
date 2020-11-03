@@ -57,13 +57,14 @@ if  [[ $GITHUB_COMMIT = "1" ]]; then
 
     for repo in thamos adviser analyzer common lab package-extract python solver storages
     do
-        mkdir -p thoth-station.github.io/assets/
+        mkdir -p thoth-station.github.io/assets/${repo}/
         mv thoth/${repo}/_modules/  thoth/${repo}/modules/|| true
         mv thoth/${repo}/_images/  thoth/${repo}/images/|| true
         mv thoth/${repo}/_sources/  thoth/${repo}/sources/|| true
-        mv thoth/${repo}/_static/* thoth-station.github.io/assets/ || true
+        mv thoth/${repo}/_static/* thoth-station.github.io/assets/${repo}/ || true
+        sed -i 's|_sources/|sources/|g' thoth-station.github.io/assets/${repo}/searchtools.js;
         pushd thoth/${repo}
-        find -iname '*.html' -exec sed -i 's|_static/|/assets/|g' {} \;
+        find -iname '*.html' -exec sed -i "s|_static/|/assets/${repo}/|g" {} \;
         find -iname '*.html' -exec sed -i 's|_modules/|modules/|g' {} \;
         find -iname '*.html' -exec sed -i 's|_images/|/assets/|g' {} \;
         find -iname '*.html' -exec sed -i 's|/images/|/assets/|g' {} \;
