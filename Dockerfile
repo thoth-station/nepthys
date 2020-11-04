@@ -11,8 +11,8 @@ ENV USER=nepthys \
 WORKDIR /home/user
 
 # Copy the script from current directory contents into the container
-COPY docker_entrypoint.sh /home/user
-COPY create_docs.sh /home/user
+COPY docker_entrypoint.sh .
+COPY create_docs.sh .
 COPY _templates /home/user/_templates
 
 # Add the ssh key from local dir to container dir.
