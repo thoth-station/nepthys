@@ -67,3 +67,9 @@
 * :truck: pipenv updates are not needed
 * :8ball: make pre-commit happy
 * Disable colors and spinner in Pipenv
+
+## Release 0.2.5 (2020-11-04T19:07:42)
+### Features
+* :guardsman: update OWNERS
+* utilize the workdir aspect in the dockerfile (#51)
+* :turtle: include assets based on projects
