@@ -1,5 +1,5 @@
 # Use a fedora OS
-FROM fedora:31
+FROM registry.fedoraproject.org/fedora:32
 
 ENV USER=nepthys \
     PIPENV_CACHE_DIR=/home/user/.cache/pipenv \
