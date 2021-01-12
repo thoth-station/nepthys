@@ -105,5 +105,8 @@ venv.bak/
 clones
 
 thoth-station.github.io/
-thoth/
-!thoth/nepthys
+!thoth/
+thoth/*
+!thoth/nepthys/
+thoth/nepthys/*
+!thoth/nepthys/__init__.py
