@@ -73,3 +73,9 @@
 * :guardsman: update OWNERS
 * utilize the workdir aspect in the dockerfile (#51)
 * :turtle: include assets based on projects
+
+## Release 0.2.6 (2021-01-12T16:49:05)
+### Features
+* unignore __init__.py explicitly under thoth/nepthys dir (#61)
+* don't ignore the thoth/nepthys/__init__.py file changes (#58)
+* bump python version (#55)
