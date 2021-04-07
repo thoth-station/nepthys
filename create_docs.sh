@@ -8,7 +8,7 @@ workdir=$PWD
 
 rm -rf clones # thoth
 mkdir -p thoth/
-for repo in thamos adviser analyzer common lab package-extract python solver storages
+for repo in thamos adviser analyzer common lab package-extract python solver storages investigator messaging
 do
     git clone --depth 1 https://github.com/thoth-station/${repo}.git clones/${repo}
     # Copy _templates to each repo for Google analytics functionality.
@@ -55,7 +55,7 @@ if  [[ $GITHUB_COMMIT = "1" ]]; then
     git clone --depth 1 git@github.com:thoth-station/thoth-station.github.io.git
     rm -rf thoth-station.github.io/docs/developers/
 
-    for repo in thamos adviser analyzer common lab package-extract python solver storages
+    for repo in thamos adviser analyzer common lab package-extract python solver storages investigator messaging
     do
         mkdir -p thoth-station.github.io/assets/${repo}/
         mv thoth/${repo}/_modules/  thoth/${repo}/modules/|| true
