@@ -79,3 +79,8 @@
 * unignore __init__.py explicitly under thoth/nepthys dir (#61)
 * don't ignore the thoth/nepthys/__init__.py file changes (#58)
 * bump python version (#55)
+
+## Release 0.3.0 (2021-04-08T17:52:46)
+### Improvements
+* :robot: ci updates w.r.t prow, thoth and aicoe-ci (#66)
+* Add investigator and messaging to the docs creation
