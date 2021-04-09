@@ -84,3 +84,7 @@
 ### Improvements
 * :robot: ci updates w.r.t prow, thoth and aicoe-ci (#66)
 * Add investigator and messaging to the docs creation
+
+## Release 0.3.1 (2021-04-09T10:48:07)
+### Features
+* Fix image location in the publish docs (#70)
