@@ -67,7 +67,6 @@ if  [[ $GITHUB_COMMIT = "1" ]]; then
         find -iname '*.html' -exec sed -i "s|_static/|/assets/${repo}/|g" {} \;
         find -iname '*.html' -exec sed -i 's|_modules/|modules/|g' {} \;
         find -iname '*.html' -exec sed -i 's|_images/|/assets/|g' {} \;
-        find -iname '*.html' -exec sed -i 's|/images/|/assets/|g' {} \;
         find -iname '*.html' -exec sed -i 's|_sources/|sources/|g' {} \;
         find -iname '*.html' -exec sed -i 's|="[a-zA-Z/._]*/assets/|="/assets/|g' {} \;
         popd
