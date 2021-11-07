@@ -18,7 +18,7 @@ do
     pushd clones/${repo}
     pipenv install
     # Dirty hack due to deps issues.
-    pipenv run pip3 install sphinx==2.2.2 sphinx-nameko-theme==0.0.3 sphinxcontrib-openapi==0.5.0
+    pipenv run pip3 install sphinx==2.2.2 sphinx-nameko-theme==0.0.3 sphinxcontrib-openapi==0.5.0 docutils==0.17
 
     if [[ "$repo" = "thamos" ]]; then
         # Thamos requires OpenAPI specification from User API.
