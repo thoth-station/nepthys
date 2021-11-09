@@ -1,4 +1,7 @@
 
+## Release 0.3.2 (2021-11-09T14:48:43)
+* Pin docutils
+
 ## Release 0.2.0 (2020-09-14T11:09:41)
 ### Features
 * Fix serving static content in sphinx docs (#30)
