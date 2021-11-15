@@ -1,4 +1,7 @@
 
+## Release 0.4.0 (2021-11-15T09:28:42)
+* add keb to list of repos which docs are built for
+
 ## Release 0.3.2 (2021-11-09T14:48:43)
 * Pin docutils
 
