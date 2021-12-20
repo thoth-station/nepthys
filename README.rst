@@ -2,7 +2,7 @@ Nepthys
 -------
 
 .. image:: https://img.shields.io/github/v/tag/thoth-station/nepthys?style=plastic
-  :target: https://github.com/thoth-station/nepthys/releases
+  :target: https://github.com/thoth-station/nepthys/tags
   :alt: GitHub tag (latest by date)
 
 .. image:: https://quay.io/repository/thoth-station/nepthys/status
