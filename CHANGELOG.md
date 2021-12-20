@@ -1,4 +1,7 @@
 
+## Release 0.4.1 (2021-12-20T12:52:57)
+* Use a single list of repos to generate and commit changes
+
 ## Release 0.4.0 (2021-11-15T09:28:42)
 * add keb to list of repos which docs are built for
 
