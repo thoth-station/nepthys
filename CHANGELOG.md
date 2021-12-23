@@ -1,4 +1,7 @@
 
+## Release 0.4.3 (2021-12-23T19:21:32)
+* Build kebechet from the subdir kebechet and not from thoth
+
 ## Release 0.4.2 (2021-12-23T18:02:30)
 * :alien: Include gcc-c++ compiler into nepthys
 * Point the tag badge to the list of tags
