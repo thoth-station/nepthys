@@ -1,4 +1,10 @@
 
+## Release 0.4.2 (2021-12-23T18:02:30)
+* :alien: Include gcc-c++ compiler into nepthys
+* Point the tag badge to the list of tags
+* Setup the badges with the quay and github tags
+* Update pyproject.toml to use Python 3.8
+
 ## Release 0.4.1 (2021-12-20T12:52:57)
 * Use a single list of repos to generate and commit changes
 

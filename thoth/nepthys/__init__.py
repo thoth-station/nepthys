@@ -18,4 +18,4 @@
 """Bot to keep thoth-station documentation up to date."""
 
 __name__ = "nepthys"
-__version__ = "0.4.1"
+__version__ = "0.4.2"
