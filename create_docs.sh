@@ -25,6 +25,8 @@ do
         # Thamos requires OpenAPI specification from User API.
         git clone --depth 1 https://github.com/thoth-station/user-api.git ../user-api
         pipenv run sphinx-apidoc -o docs/source thamos --implicit-namespaces
+    elif [[ "$repo" = "kebechet" ]]; then
+        pipenv run sphinx-apidoc -o docs/source kebechet --implicit-namespaces
     else
         pipenv run sphinx-apidoc -o docs/source thoth --implicit-namespaces
     fi
