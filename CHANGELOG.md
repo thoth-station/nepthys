@@ -1,4 +1,8 @@
 
+## Release 0.4.4 (2022-06-14T03:30:42)
+* dcc85fa Fix the jinja2 for working version
+* e98ba1b Enable TLS verification
+
 ## Release 0.4.3 (2021-12-23T19:21:32)
 * Build kebechet from the subdir kebechet and not from thoth
 
